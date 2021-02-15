@@ -3,120 +3,94 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>DAML： Dual Attention Mutual Learning between Ratings and Reviews for Item Recommendation | 酸希Hope_Tart</title>
-<meta name="description" content="给时间以生命。Make time for life." />
-<link rel="shortcut icon" href="https://sourxi.github.io//favicon.ico">
+<link rel="shortcut icon" href="https://sourxi.github.io//favicon.ico?v=1613400520872">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://sourxi.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="DAML： Dual Attention Mutual Learning between Ratings and Reviews for Item Recommendation | 酸希Hope_Tart - Atom Feed" href="https://sourxi.github.io//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
-<script src="https://sourxi.github.io//media/js/jquery.min.js"></script>
-<script src="https://sourxi.github.io//media/js/masonry.pkgd.min.js"></script>
-<script src="https://sourxi.github.io//media/js/aos.js"></script>
-<script src="https://sourxi.github.io//media/js/pace.min.js"></script>
-<script src="https://sourxi.github.io//media/js/view-image.min.js"></script>
-<script src="https://sourxi.github.io//media/js/jquery.magnific-popup.min.js"></script>
-<script src="https://sourxi.github.io//media/js/functions.js"></script>
-    <meta name="referrer" content="never">
+
+
     <meta name="description" content="DAML: 项目推荐评分与评价的双注意互学习
 摘要
 ​        尽管有很多基于矩阵分解的协同过滤方法都取得了巨大成功，但是推荐系统领域仍然有着很大的进步空间。其中一个主要的困难就是冷启动和数据稀疏问题需要更好的解决方案。最近的研究中开..." />
     <meta name="keywords" content="" />
-    <script src="https://sourxi.github.io//media/js/waterfall.min.js"></script>
-    <script src="https://sourxi.github.io//media/js/prism.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
-            <header id="header" class="grid-container">
-        <!-- start: .menu-wrapper -->
-        <div class="menu-mobile"> 
-          <i class="fa fa-reorder"></i>
-        </div>
-        <div class="menu-wrapper">
-          <div class="">
-            <div class="logo">
-              <a href="https://sourxi.github.io/"><img src="/media/images/logoo.png" alt=""></a>
-            </div>
-            <!-- start: .main-nav -->
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://sourxi.github.io/">
+  <img class="avatar" src="https://sourxi.github.io//images/avatar.png?v=1613400520872" alt="">
+  </a>
+  <h1 class="site-title">
+    酸希Hope_Tart
+  </h1>
+  <p class="site-description">
+    给时间以生命。Make time for life.
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
 
-            <nav class="main-nav grid-container grid-parent">
-              <ul id="menu-header" class="menu gradient-effect">
-                <li class=""><a href="https://sourxi.github.io/" class="menu">首页</a></li>
-                
-                  <li class="" >
-                    <a href="/" class="menu">
-                      首页
-                    </a>
-                  </li>
-                
-                  <li class="" >
-                    <a href="/archives" class="menu">
-                      归档
-                    </a>
-                  </li>
-                
-                  <li class="" >
-                    <a href="/tags" class="menu">
-                      标签
-                    </a>
-                  </li>
-                
-                  <li class="" >
-                    <a href="/post/about" class="menu">
-                      关于
-                    </a>
-                  </li>
-                
-                <li class="search-menu-item hide-on-mobile hide-on-tablet"><a href="#search-lightbox" class="lightbox mfp-inline"><i class="fa fa-search-line"></i></a></li>
-              </ul>
-            </nav>
-            <a href="#search-lightbox" class="lightbox epcl-search-button mfp-inline hide-on-tablet hide-on-desktop"><i class="fa fa-search-line"></i></a>
-            <!-- end: .main-nav -->
-            <div class="clear"></div>
-            <div class="border hide-on-tablet hide-on-mobile"></div>
-          </div>    
-          <div class="clear"></div>
-        </div>
-        <!-- end: .menu-wrapper -->
-        <div class="clear"></div>
-      </header>
-      <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
-        <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
-          <div class="search-wrapper section">
-            <form id="gridea-search-form" data-update="1613400429241" action="/search/index.html" class="search-form" _lpchecked="1">
-              <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
-              <button type="submit" class="submit" aria-label="Submit">
-                <i class="fa fa-search-line"></i>
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-
-      <main id="single" class="main grid-container fullcover no-sidebar aos-init aos-animate" data-aos="fade">
-
-        <div class="center content">
-          <div class="featured-image cover" style="background-image: url('/media/images/gridea.jpg');">
-            <div class="meta top"> 
-              <time class="meta-info" style="float:left;" datetime="2021-02-15"><i class="fa fa-calendar"></i><span class="lately">4 小时前</span></time>
-              
-              <a href="https://sourxi.github.io/post/daml-dual-attention-mutual-learning-between-ratings-and-reviews-for-item-recommendation/#comments" class="comments meta-info" title="">
-                <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/daml-dual-attention-mutual-learning-between-ratings-and-reviews-for-item-recommendation/"> </span>
-              </a>
-              <span id="/daml-dual-attention-mutual-learning-between-ratings-and-reviews-for-item-recommendation/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              DAML： Dual Attention Mutual Learning between Ratings and Reviews for Item Recommendation
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-02-15
+              </span>
+              <span>
+                5 min read
+              </span>
               
             </div>
-            <div class="info">
-              <div class="tags ">
-                
-              </div>
-              <h1 class="title ularge white bold">DAML： Dual Attention Mutual Learning between Ratings and Reviews for Item Recommendation</h1>
-            </div>
-          </div>
-        </div>  
-
-        <div class="epcl-page-wrapper">
-          <div class="left-content grid-70 np-mobile">
-            <article class="main-article post">
-              <section class="post-content">
-                <div class="text">
-                  <p>DAML: 项目推荐评分与评价的双注意互学习</p>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>DAML: 项目推荐评分与评价的双注意互学习</p>
 <h4 id="摘要">摘要</h4>
 <p>​        尽管有很多基于矩阵分解的协同过滤方法都取得了巨大成功，但是推荐系统领域仍然有着很大的进步空间。其中一个主要的困难就是冷启动和数据稀疏问题需要更好的解决方案。最近的研究中开始尝试结合评论来做评分预测。然而，还有两大问题需要解决：（1）大多数现有的研究都采用了一种静态和独立的方法来提取用户和评论的隐性特征表示，忽略了这些隐形特征之间的相互关联，从而导致无法全面捕捉到用户的偏好。（2）现在还没有统一评论和评分的有效框架。因此，我们提出了一个新的项目推荐评分与评价的双注意互学习。特别地，我们使用卷积神经网络的局部和相互注意力来提高DAML模型的可解释性。这样评分特征和评论特征就被整合成一个统一的神经网络模型，并且特征之间的高阶非线性相互作用可以通过神经因子分解机来实现，从而完成最终的评分预测。通过在五个真实数据集上的实验表明DAML在评分预测准确率上比其他最新方法都更高。此外，注意力机制可以高亮出评论中的相关信息来提高评分预测的可解释性。</p>
 <h4 id="1-引言">1 引言</h4>
@@ -136,181 +110,83 @@
 <li>实验在5个真实世界的数据集上进行，实验结果表明，提出的DAML模型比现有的最先进的方法达到了更好的评分预测精度。进一步的研究表明，DAML在评论中强调的词是非常有意义的，可以揭示用户对某一物品的具体偏好，这有助于提高推荐系统的可解释性。本文的其余部分组织如下。第2节回顾了推荐系统的相关工作。第3节介绍了问题的提出；第4节详细介绍了DAML模型的整体框架，与之配套的是学习算法。第5节介绍了实验设置和结果。第6节总结全文。</li>
 </ul>
 
-                </div>
-                <div class="clear"></div>
-              </section>
-            </article>
-            <div class="clear"></div>
-
-            <section class="related section">
-              
-              
-
-                <div class="clear"></div>
-            </section>
-
-              <div class="clear"></div>
-              
-            
-              <div id="comments" class="bg-white hosted ">
-                <div class="clear"></div>
-<script>
-jQuery(document).ready(function($){
-    $('.vemoji-btn').text('😀');
-    $("#comments").on('click', 'span.vat',function(){
-        $(this).parent('div.vmeta').next("div.vcontent").after($("div.vwrap"));
-        $('textarea#veditor').focus();
-    })
-    if(window.location.hash){
-        var checkExist = setInterval(function() {
-            if ($(window.location.hash).length) {
-                $('html, body').animate({scrollTop: $(window.location.hash).offset().top-200}, 600);
-                clearInterval(checkExist);
-            }
-        }, 100);
-    }
-})
-</script>
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E6%91%98%E8%A6%81">摘要</a></li>
+<li><a href="#1-%E5%BC%95%E8%A8%80">1 引言</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
               </div>
-            
-
             </div>
-          </div>
-      </main>
-
-          <footer id="footer" class="grid-container">
-        <div class="widgets row gradient-effect">
-            <div class="default-sidebar border-effect">
-              <div class="grid-33 tablet-grid-50 mobile-grid-100">
-                <section id="tag_cloud-2" class="widget widget_epcl_posts_thumbs underline-effect">
-                  <h4 class="widget-title title white bordered">最新文章</h4>
-                  
-                  
-                  <article class="item post-0 post type-post status-publish format-standard has-post-thumbnail hentry">
-                    <a href="https://sourxi.github.io/post/daml-dual-attention-mutual-learning-between-ratings-and-reviews-for-item-recommendation/" class="thumb hover-effect">
-                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/gridea.jpg');"></span>
-                    </a>
-                    <div class="info gradient-effect">
-                      <time datetime="2021-02-15">2021-02-15</time>
-                      <h4 class="title usmall">
-                        <a href="https://sourxi.github.io/post/daml-dual-attention-mutual-learning-between-ratings-and-reviews-for-item-recommendation/">DAML： Dual Attention Mutual Learning between Ratings and Reviews for Item Recommendation</a>
-                      </h4>
-                    </div>
-                    <div class="clear"></div>
-                  </article>
-                  
-                  
-                  
-                  <article class="item post-1 post type-post status-publish format-standard has-post-thumbnail hentry">
-                    <a href="https://sourxi.github.io/post/about/" class="thumb hover-effect">
-                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/gridea.jpg');"></span>
-                    </a>
-                    <div class="info gradient-effect">
-                      <time datetime="2019-01-25">2019-01-25</time>
-                      <h4 class="title usmall">
-                        <a href="https://sourxi.github.io/post/about/">关于</a>
-                      </h4>
-                    </div>
-                    <div class="clear"></div>
-                  </article>
-                  
-                  
-                  
-                  <article class="item post-2 post type-post status-publish format-standard has-post-thumbnail hentry">
-                    <a href="https://sourxi.github.io/post/hello-gridea/" class="thumb hover-effect">
-                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('https://sourxi.github.io//post-images/hello-gridea.png');"></span>
-                    </a>
-                    <div class="info gradient-effect">
-                      <time datetime="2018-12-12">2018-12-12</time>
-                      <h4 class="title usmall">
-                        <a href="https://sourxi.github.io/post/hello-gridea/">Hello Gridea</a>
-                      </h4>
-                    </div>
-                    <div class="clear"></div>
-                  </article>
-                  
-                  
-                  <div class="clear"></div>
-                </section>
-              </div>
-
-              <div class="grid-33 tablet-grid-50 mobile-grid-100">
-                <section id="tag_cloud-2" class="widget widget_tag_cloud underline-effect">
-                  <h4 class="widget-title title white bordered">标签云</h4>
-                  <div class="tagcloud">
-                    
-                  </div>
-                  <div class="clear"></div>
-                </section>
-              </div>
-
-              <div class="grid-33 tablet-grid-50 mobile-grid-100">
-                <section id="epcl_about-2" class="widget widget_epcl_about underline-effect">
-                  <h4 class="widget-title title white bordered">关于我</h4>
-                  <div class="avatar">
-                    <a href="" class="translate-effect thumb"><span class="fullimage cover" style="background-image: url(https://sourxi.github.io//images/avatar.png);"></span></a>
-                  </div>
-                  <div class="info">
-                    <h4 class="title small author-name gradient-effect no-margin"><a href="">酸希Hope_Tart</a></h4>
-                    <p class="founder">给时间以生命。Make time for life.</p>
-                    <div class="social">
-                      
-                        
-                      
-                        
-                      
-                        
-                      
-                        
-                      
-                        
-                      
-                    </div> 
-                  </div>
-                  <div class="clear"></div>
-                  </section>
-              </div>
-
-            </div>
-            <div class="clear"></div>
+          </article>
         </div>
 
-        <div class="logo">
-          <a href="https://sourxi.github.io/"><img src="/media/images/gridea.png" alt=""></a>
-        </div>
-        <p class="published border-effect">
-          ©2019 共 3 篇文章
-          <br/>
-          Theme <a href="https://gridea.dev/" target="_blank">「breek」</a> Powered by <a href="https://gridea.dev/" target="_blank">「Gridea」</a>
-        </p>
         
-        <a href="javascript:void(0)" id="back-to-top" class="epcl-button dark" style="display:none">
-          <i class="fa fa-arrow"></i>
-        </a>
-    </footer>
-    
-    <div class="clear"></div>
 
         
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
-<script type="text/javascript" src="https://cdn.staticfile.org/valine/1.3.10/Valine.Pure.min.js"></script>
-<script>
-    new Valine({
-        el: '#comments',
-        appId: 'false' ,
-        appKey: 'false',
-        pageSize: 30,
-        placeholder: '既然来了，那就留个痕迹吧~',
-        visitor: false // 阅读量统计
-    })
-</script>
-    
 
-      
-    <script src="https://sourxi.github.io//media/js/functions-post.js"></script>
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://sourxi.github.io//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
 
+      </div>
     </div>
-    <!-- end: #wrapper -->
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
   </body>
 </html>
