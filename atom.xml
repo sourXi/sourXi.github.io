@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sourxi.github.io/</id>
-    <title>Hey</title>
-    <updated>2021-02-15T10:09:16.745Z</updated>
+    <title>酸希Hope_Tart</title>
+    <updated>2021-02-15T10:25:33.521Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sourxi.github.io/"/>
     <link rel="self" href="https://sourxi.github.io/atom.xml"/>
-    <subtitle>Hmm</subtitle>
+    <subtitle>给时间以生命。Make time for life.</subtitle>
     <logo>https://sourxi.github.io/images/avatar.png</logo>
     <icon>https://sourxi.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, Hey</rights>
+    <rights>All rights reserved 2021, 酸希Hope_Tart</rights>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://sourxi.github.io/post/hello-gridea/</id>
