@@ -1,96 +1,94 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>DAML： Dual Attention Mutual Learning between Ratings and Reviews for Item Recommendation | 酸希Hope_Tart</title>
-<link rel="shortcut icon" href="https://sourxi.github.io//favicon.ico?v=1613400814965">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<meta name="description" content="给时间以生命。Make time for life.">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://sourxi.github.io//favicon.ico?v=1613400870785">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://sourxi.github.io//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="DAML： Dual Attention Mutual Learning between Ratings and Reviews for Item Recommendation | 酸希Hope_Tart - Atom Feed" href="https://sourxi.github.io//atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
-    <meta name="description" content="DAML: 项目推荐评分与评价的双注意互学习
-摘要
-​        尽管有很多基于矩阵分解的协同过滤方法都取得了巨大成功，但是推荐系统领域仍然有着很大的进步空间。其中一个主要的困难就是冷启动和数据稀疏问题需要更好的解决方案。最近的研究中开..." />
-    <meta name="keywords" content="" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://sourxi.github.io/">
-  <img class="avatar" src="https://sourxi.github.io//images/avatar.png?v=1613400814965" alt="">
-  </a>
-  <h1 class="site-title">
-    酸希Hope_Tart
-  </h1>
-  <p class="site-description">
-    给时间以生命。Make time for life.
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://sourxi.github.io/">酸希Hope_Tart</a></h3>
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
-
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              DAML： Dual Attention Mutual Learning between Ratings and Reviews for Item Recommendation
-            </h2>
-            <div class="post-info">
-              <span>
-                2021-02-15
-              </span>
-              <span>
-                5 min read
-              </span>
-              
-            </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <p>DAML: 项目推荐评分与评价的双注意互学习</p>
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>DAML： Dual Attention Mutual Learning between Ratings and Reviews for Item Recommendation</h1>
+            <p class="article-meta">
+              2021-02-15
+              
+            </p>
+            
+            <div class="post-content">
+              <p>DAML: 项目推荐评分与评价的双注意互学习</p>
 <h4 id="摘要">摘要</h4>
 <p>​        尽管有很多基于矩阵分解的协同过滤方法都取得了巨大成功，但是推荐系统领域仍然有着很大的进步空间。其中一个主要的困难就是冷启动和数据稀疏问题需要更好的解决方案。最近的研究中开始尝试结合评论来做评分预测。然而，还有两大问题需要解决：（1）大多数现有的研究都采用了一种静态和独立的方法来提取用户和评论的隐性特征表示，忽略了这些隐形特征之间的相互关联，从而导致无法全面捕捉到用户的偏好。（2）现在还没有统一评论和评分的有效框架。因此，我们提出了一个新的项目推荐评分与评价的双注意互学习。特别地，我们使用卷积神经网络的局部和相互注意力来提高DAML模型的可解释性。这样评分特征和评论特征就被整合成一个统一的神经网络模型，并且特征之间的高阶非线性相互作用可以通过神经因子分解机来实现，从而完成最终的评分预测。通过在五个真实数据集上的实验表明DAML在评分预测准确率上比其他最新方法都更高。此外，注意力机制可以高亮出评论中的相关信息来提高评分预测的可解释性。</p>
 <h4 id="1-引言">1 引言</h4>
@@ -110,83 +108,89 @@
 <li>实验在5个真实世界的数据集上进行，实验结果表明，提出的DAML模型比现有的最先进的方法达到了更好的评分预测精度。进一步的研究表明，DAML在评论中强调的词是非常有意义的，可以揭示用户对某一物品的具体偏好，这有助于提高推荐系统的可解释性。本文的其余部分组织如下。第2节回顾了推荐系统的相关工作。第3节介绍了问题的提出；第4节详细介绍了DAML模型的整体框架，与之配套的是学习算法。第5节介绍了实验设置和结果。第6节总结全文。</li>
 </ul>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#%E6%91%98%E8%A6%81">摘要</a></li>
-<li><a href="#1-%E5%BC%95%E8%A8%80">1 引言</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-              </div>
             </div>
           </article>
         </div>
-
+        <div class="paper" data-aos="fade-in">
+          
+        </div>
         
+      </div>
 
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://sourxi.github.io//images/avatar.png?v=1613400870785" class="no-responsive avatar">
+    <div class="text-muted">给时间以生命。Make time for life.</div>
+    <div class="social-container">
+      
         
-
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://sourxi.github.io//atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://sourxi.github.io/post/daml-dual-attention-mutual-learning-between-ratings-and-reviews-for-item-recommendation/">DAML： Dual Attention Mutual Learning between Ratings and Reviews for Item Recommendation</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://sourxi.github.io/post/about/">关于</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://sourxi.github.io/post/hello-gridea/">Hello Gridea</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://sourxi.github.io//atom.xml" target="_blank">RSS</a>
+  </div>
 </div>
 
-      </div>
+
     </div>
 
-    <script>
-      hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+<script type="application/javascript">
 
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
+AOS.init();
 
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
+hljs.initHighlightingOnLoad()
 
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
+</script>
 
-    </script>
+
+
+
   </body>
 </html>
