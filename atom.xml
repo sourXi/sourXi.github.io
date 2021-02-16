@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sourxi.github.io/</id>
     <title>酸希Hope_Tart</title>
-    <updated>2021-02-16T14:12:00.795Z</updated>
+    <updated>2021-02-16T14:24:16.824Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sourxi.github.io/"/>
     <link rel="self" href="https://sourxi.github.io/atom.xml"/>
@@ -35,7 +35,10 @@
         <link href="https://sourxi.github.io/post/daml-dual-attention-mutual-learning-between-ratings-and-reviews-for-item-recommendation/">
         </link>
         <updated>2021-02-15T10:32:01.000Z</updated>
-        <content type="html"><![CDATA[<p>DAML: 项目推荐评分与评价的双注意互学习<br>
+        <content type="html"><![CDATA[<p>📎📎📎<br>
+Liu, Donghua and Li, Jing and Du, Bo and Chang, Jun and Gao, Rong. 2019. DAML: Dual Attention Mutual Learning between Ratings and Reviews for Item Recommendation. Association for Computing Machinery. 344–352.<br>
+📎📎📎</p>
+<p>DAML: 项目推荐评分与评价的双注意互学习<br>
 👀</p>
 <h3 id="摘要">摘要</h3>
 <p>​尽管有很多基于矩阵分解的协同过滤方法都取得了巨大成功，但是推荐系统领域仍然有着很大的进步空间。其中一个主要的困难就是冷启动和数据稀疏问题需要更好的解决方案。最近的研究中开始尝试结合评论来做评分预测。然而，还有两大问题需要解决：（1）大多数现有的研究都采用了一种静态和独立的方法来提取用户和评论的隐性特征表示，忽略了这些隐形特征之间的相互关联，从而导致无法全面捕捉到用户的偏好。（2）现在还没有统一评论和评分的有效框架。因此，我们提出了一个新的项目推荐评分与评价的双注意互学习。特别地，我们使用卷积神经网络的局部和相互注意力来提高DAML模型的可解释性。这样评分特征和评论特征就被整合成一个统一的神经网络模型，并且特征之间的高阶非线性相互作用可以通过神经因子分解机来实现，从而完成最终的评分预测。通过在五个真实数据集上的实验表明DAML在评分预测准确率上比其他最新方法都更高。此外，注意力机制可以高亮出评论中的相关信息来提高评分预测的可解释性。</p>
