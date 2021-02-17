@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sourxi.github.io/</id>
     <title>酸希Hope_Tart</title>
-    <updated>2021-02-17T09:22:26.277Z</updated>
+    <updated>2021-02-17T09:49:12.263Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sourxi.github.io/"/>
     <link rel="self" href="https://sourxi.github.io/atom.xml"/>
@@ -37,7 +37,7 @@
 </code></pre>
 <!-- more -->
 <h2 id="方法一暴力法">💡 方法一：暴力法</h2>
-<p>这个方法是我最开始想到的，也就是两重循环，分别枚举<code>a[i]</code>和找出<code>target - a[j]</code>. 值得注意的是题中<strong>数组中同一个元素不能使用两遍</strong> 这句话，也就是<code>i</code>和<code>j</code>不相等。错过这一点让我白白提交了三次orz....</p>
+<p>这个方法是我最开始想到的，也就是两重循环，分别枚举<code>a[i]</code>和找出<code>target - a[I]</code>. 值得注意的是题中<strong>数组中同一个元素不能使用两遍</strong> 这句话，也就是<code>i</code>和<code>j</code>不相等。错过这一点让我白白提交了三次orz....</p>
 <p><strong>代码：</strong></p>
 <pre><code>class Solution {
 public:
