@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sourxi.github.io/</id>
     <title>酸希Hope_Tart</title>
-    <updated>2021-02-17T10:11:59.400Z</updated>
+    <updated>2021-05-14T00:10:53.377Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sourxi.github.io/"/>
     <link rel="self" href="https://sourxi.github.io/atom.xml"/>
@@ -10,6 +10,53 @@
     <logo>https://sourxi.github.io/images/avatar.png</logo>
     <icon>https://sourxi.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 酸希Hope_Tart</rights>
+    <entry>
+        <title type="html"><![CDATA[STEm-Seg论文阅读]]></title>
+        <id>https://sourxi.github.io/post/stem-seg-lun-wen-yue-du/</id>
+        <link href="https://sourxi.github.io/post/stem-seg-lun-wen-yue-du/">
+        </link>
+        <updated>2021-05-14T00:10:13.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="动机">动机</h2>
+<p>top-down + tracking-by-detection模型有多个网络组成，算力需求大，不是端到端。</p>
+<h2 id="创新">创新</h2>
+<p>bottom up + spatio-temporal</p>
+<p>不知道类别，相同物体的像素聚类</p>
+<ol>
+<li>适应多场景欠标注条件</li>
+<li>聚类</li>
+<li>单网络</li>
+</ol>
+<h2 id="方法">方法</h2>
+<p><strong>输入：</strong><u>T*W*H</u>（N）*3</p>
+<p>**输出：**1⃣️每个像素的embedding N*E 2⃣️每个像素和每个维度的方差N*E 3⃣️ object instance center heatmap</p>
+<p>**Instance表示：**1. 计算均值+方差  2. 计算像素属于该类别的概率  3. threshhold p&gt;0.5</p>
+<p>**训练：**可训练的参数——均值&amp;方差；目标函数——IoU（4）；loss函数——三个</p>
+<p>**Embedding表示：**自身+位置信息（xi，yi，ti），2d变3d，也可以free dimension，但不是越多越好</p>
+<p><strong>Infer 流程：</strong></p>
+<figure data-type="image" tabindex="1"><img src="https://pic2.zhimg.com/v2-aeecb1b2601ce3ef90b0d38ff8731639_r.jpg" alt="preview" loading="lazy"></figure>
+<p>（1）根据Heatmap选出instance的中心点；</p>
+<p>（2）找到该中心点所对应的embedding和方差向量；</p>
+<p>（3）将该instance的均值和方差用这个中心点所对应的来表示，并通过计算公式（2），来判断某个pixel属于该实例的概率；</p>
+<p>（4）由于一些像素已经分配到实例j中，所以为了更长远的考虑，将他们的信息剔除掉</p>
+<p>（5）重复1-4的操作，直到Heatmap为空集，或者最大值小于我们设定的threshold。</p>
+<p>内存限制，视频切分</p>
+<p><strong>网络结构：</strong></p>
+<p>1 encoder + 2 decoders</p>
+<p>encoder：FPN 4 scales</p>
+<p>decoder：ResNet101 3d conv + pooling（内存：size大的layer少）</p>
+<figure data-type="image" tabindex="2"><img src="https://pic4.zhimg.com/v2-6848dffeb64453ccd31c31dd133d2b13_r.jpg" alt="preview" loading="lazy"></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Self-driving Udacity]]></title>
+        <id>https://sourxi.github.io/post/self-driving-udacity/</id>
+        <link href="https://sourxi.github.io/post/self-driving-udacity/">
+        </link>
+        <updated>2021-03-28T08:58:23.000Z</updated>
+        <content type="html"><![CDATA[<p>https://www.youtube.com/watch?v=EaY5QiZwSP4<br>
+https://github.com/llSourcell/How_to_simulate_a_self_driving_car</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[题解 || #1-两数之和#]]></title>
         <id>https://sourxi.github.io/post/ti-jie-or-1-liang-shu-zhi-he/</id>

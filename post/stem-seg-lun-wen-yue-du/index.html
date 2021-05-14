@@ -2,24 +2,25 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Hello Gridea | 酸希Hope_Tart</title>
+<title>STEm-Seg论文阅读 | 酸希Hope_Tart</title>
 <link rel="shortcut icon" href="https://sourxi.github.io//favicon.ico?v=1620951046600">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://sourxi.github.io//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Hello Gridea | 酸希Hope_Tart - Atom Feed" href="https://sourxi.github.io//atom.xml">
+<link rel="alternate" type="application/atom+xml" title="STEm-Seg论文阅读 | 酸希Hope_Tart - Atom Feed" href="https://sourxi.github.io//atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="👏  欢迎使用 Gridea ！
-✍️  Gridea 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...
+    <meta name="description" content="动机
+top-down + tracking-by-detection模型有多个网络组成，算力需求大，不是端到端。
+创新
+bottom up + spatio-temporal
+不知道类别，相同物体的像素聚类
 
-Github
-Gridea 主页
-示例网站
-特性👇
-📝  你可以使用最酷的 Markdo..." />
-    <meta name="keywords" content="Gridea" />
+适应多场景欠标注条件
+聚类
+..." />
+    <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -81,54 +82,58 @@ Gridea 主页
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              Hello Gridea
+              STEm-Seg论文阅读
             </h2>
             <div class="post-info">
               <span>
-                2018-12-12
+                2021-05-14
               </span>
               <span>
                 2 min read
               </span>
               
-                <a href="https://sourxi.github.io/tag/2K2se2CHU/" class="post-tag">
-                  # Gridea
-                </a>
-              
             </div>
-            
-              <img class="post-feature-image" src="https://sourxi.github.io//post-images/hello-gridea.png" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+                <h2 id="动机">动机</h2>
+<p>top-down + tracking-by-detection模型有多个网络组成，算力需求大，不是端到端。</p>
+<h2 id="创新">创新</h2>
+<p>bottom up + spatio-temporal</p>
+<p>不知道类别，相同物体的像素聚类</p>
+<ol>
+<li>适应多场景欠标注条件</li>
+<li>聚类</li>
+<li>单网络</li>
+</ol>
+<h2 id="方法">方法</h2>
+<p><strong>输入：</strong><u>T*W*H</u>（N）*3</p>
+<p>**输出：**1⃣️每个像素的embedding N*E 2⃣️每个像素和每个维度的方差N*E 3⃣️ object instance center heatmap</p>
+<p>**Instance表示：**1. 计算均值+方差  2. 计算像素属于该类别的概率  3. threshhold p&gt;0.5</p>
+<p>**训练：**可训练的参数——均值&amp;方差；目标函数——IoU（4）；loss函数——三个</p>
+<p>**Embedding表示：**自身+位置信息（xi，yi，ti），2d变3d，也可以free dimension，但不是越多越好</p>
+<p><strong>Infer 流程：</strong></p>
+<figure data-type="image" tabindex="1"><img src="https://pic2.zhimg.com/v2-aeecb1b2601ce3ef90b0d38ff8731639_r.jpg" alt="preview" loading="lazy"></figure>
+<p>（1）根据Heatmap选出instance的中心点；</p>
+<p>（2）找到该中心点所对应的embedding和方差向量；</p>
+<p>（3）将该instance的均值和方差用这个中心点所对应的来表示，并通过计算公式（2），来判断某个pixel属于该实例的概率；</p>
+<p>（4）由于一些像素已经分配到实例j中，所以为了更长远的考虑，将他们的信息剔除掉</p>
+<p>（5）重复1-4的操作，直到Heatmap为空集，或者最大值小于我们设定的threshold。</p>
+<p>内存限制，视频切分</p>
+<p><strong>网络结构：</strong></p>
+<p>1 encoder + 2 decoders</p>
+<p>encoder：FPN 4 scales</p>
+<p>decoder：ResNet101 3d conv + pooling（内存：size大的layer少）</p>
+<figure data-type="image" tabindex="2"><img src="https://pic4.zhimg.com/v2-6848dffeb64453ccd31c31dd133d2b13_r.jpg" alt="preview" loading="lazy"></figure>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E7%89%B9%E6%80%A7">特性👇</a></li>
+<li><a href="#%E5%8A%A8%E6%9C%BA">动机</a></li>
+<li><a href="#%E5%88%9B%E6%96%B0">创新</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95">方法</a></li>
 </ul>
 </li>
 </ul>
@@ -138,6 +143,15 @@ Gridea 主页
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://sourxi.github.io/post/self-driving-udacity/">
+              <h3 class="post-title">
+                Self-driving Udacity
+              </h3>
+            </a>
+          </div>
         
 
         
