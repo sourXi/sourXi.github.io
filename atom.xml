@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sourxi.github.io/</id>
     <title>酸希Hope_Tart</title>
-    <updated>2021-05-14T00:17:20.675Z</updated>
+    <updated>2021-05-14T08:00:28.342Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sourxi.github.io/"/>
     <link rel="self" href="https://sourxi.github.io/atom.xml"/>
@@ -16,22 +16,28 @@
         <link href="https://sourxi.github.io/post/stem-seg-lun-wen-yue-du/">
         </link>
         <updated>2021-05-14T00:10:13.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="动机">动机</h2>
-<p>top-down + tracking-by-detection模型有多个网络组成，算力需求大，不是端到端。</p>
+        <content type="html"><![CDATA[<p>可能总是要给自己找点事做，于是最近误打误撞地在打天池的视频云比赛。</p>
+<p>一直以来我对CV方向的理解都仅仅来源于知乎上的“黑帖”……以为CV已经到头了、不能更卷之类的。虽然对图像和图形学十分感兴趣，但一直敬而远之，没能深入。（我真的好想抽出一大段时间做动画啊哭o(╥﹏╥)o）</p>
+<p>这次偶然接触了cv，感觉其实很好玩！未来也有不错的应用场景（饼）。至于比赛，这次是关于视频目标检测与分割的部分，之前已经阅读了很多Video Object/Instance Segmentation相关的paper，很多都不怎么合适。初赛阶段也一直只是跑跑 <s>卡丁车</s> 代码，感觉复赛再没有算法贡献就要被组委会踢了……所以下面总结一下最近效果还不错的一篇paper：STEm-Seg。<a href="https://arxiv.org/pdf/2003.08429.pdf">paper</a><a href="https://github.com/sabarim/STEm-Seg">code</a></p>
+<h2 id="动机">动机</h2>
+<p>之前的网络大多top-down + tracking-by-detection模型有多个网络组成，算力需求大，不是端到端。</p>
 <h2 id="创新">创新</h2>
 <p>bottom up + spatio-temporal</p>
-<p>不知道类别，相同物体的像素聚类</p>
+<p>类别agnostic，同一物体的像素聚类</p>
 <ol>
 <li>适应多场景欠标注条件</li>
 <li>聚类</li>
 <li>单网络</li>
 </ol>
 <h2 id="方法">方法</h2>
-<p><strong>输入：</strong><u>T*W*H</u>（N）*3</p>
-<p>**输出：**1⃣️每个像素的embedding N*E 2⃣️每个像素和每个维度的方差N*E 3⃣️ object instance center heatmap</p>
-<p>**Instance表示：**1. 计算均值+方差  2. 计算像素属于该类别的概率  3. threshhold p&gt;0.5</p>
-<p>**训练：**可训练的参数——均值&amp;方差；目标函数——IoU（4）；loss函数——三个</p>
-<p>**Embedding表示：**自身+位置信息（xi，yi，ti），2d变3d，也可以free dimension，但不是越多越好</p>
+<p><strong>输入：</strong> <u>T*W*H</u>（N）*3</p>
+<p><strong>输出：</strong> ①每个像素的embedding N*E ②每个像素和每个维度的方差N*E 3⃣️ object instance center heatmap</p>
+<p><strong>Instance表示：</strong><br>
+1. 计算均值+方差<br>
+2. 计算像素属于该类别的概率<br>
+3. threshhold p&gt;0.5</p>
+<p><strong>训练：</strong> 可训练的参数——均值&amp;方差；目标函数——IoU（4）；loss函数——三个</p>
+<p><strong>Embedding表示：</strong> 自身+位置信息（xi，yi，ti），2d变3d，也可以free dimension，但不是越多越好</p>
 <p><strong>Infer 流程：</strong></p>
 <figure data-type="image" tabindex="1"><img src="https://pic2.zhimg.com/v2-aeecb1b2601ce3ef90b0d38ff8731639_r.jpg" alt="preview" loading="lazy"></figure>
 <p>（1）根据Heatmap选出instance的中心点；</p>
