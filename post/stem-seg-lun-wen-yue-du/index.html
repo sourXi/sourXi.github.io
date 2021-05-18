@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>STEm-Seg论文阅读 | 酸希Hope_Tart</title>
-<link rel="shortcut icon" href="https://sourxi.github.io//favicon.ico?v=1620979782556">
+<link rel="shortcut icon" href="https://sourxi.github.io//favicon.ico?v=1621306145138">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://sourxi.github.io//styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="STEm-Seg论文阅读 | 酸希Hope_Tart - Atom Feed" href="https://sourxi.github.io//atom.xml">
@@ -22,7 +22,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://sourxi.github.io/">
-  <img class="avatar" src="https://sourxi.github.io//images/avatar.png?v=1620979782556" alt="">
+  <img class="avatar" src="https://sourxi.github.io//images/avatar.png?v=1621306145138" alt="">
   </a>
   <h1 class="site-title">
     酸希Hope_Tart
@@ -82,7 +82,7 @@
                 2021-05-14
               </span>
               <span>
-                3 min read
+                4 min read
               </span>
               
                 <a href="https://sourxi.github.io/tag/VoKwkAHeV/" class="post-tag">
@@ -128,6 +128,25 @@
 <p>encoder：FPN 4 scales</p>
 <p>decoder：ResNet101 3d conv + pooling（内存：size大的layer少）</p>
 <figure data-type="image" tabindex="2"><img src="https://pic4.zhimg.com/v2-6848dffeb64453ccd31c31dd133d2b13_r.jpg" alt="preview" loading="lazy"></figure>
+<h2 id="一些问题">一些问题</h2>
+<ol>
+<li>
+<p>heatmap是怎么学习到物体center的？<mark>open</mark></p>
+<p>H(ci)代表probability，argmax H(ci)代表概率最高的点，也就是center吧。</p>
+<p>追问：H是啥？看了代码，认为H只是在做几次down sample，结果可以看做一个feature map或者就是conv+pooling，但是很多地方都称为heatmap。但是与center的关系？</p>
+</li>
+<li>
+<p>训练过程里embedding head是在优化mean和covariance，如何理解这个covariance？</p>
+<p>边界？<code>closed</code></p>
+<p>方差小的像素点和均值点比较相似，更容易属于同一物体；方差大的地方差异大，变化剧烈，可以被划成其他物体。</p>
+</li>
+<li>
+<p>infer过程中的step 2：“Find the corresponding embedding vector E(cj) and variances V(cj).”不存在点的集合，如何计算方差V(cj)？<code>closed</code></p>
+<p>集合是图片中所有像素点，均值是计算所有点的均值。得到中心点后，以中心点为均值，计算对应方差，从而得到预测的mask。最后把mask中的点从图片中抠掉。重复。</p>
+<p>上述是猜测，未代码证实。如果是这样，那么有一点疑惑：semantic segmentation？还是要搞清楚Heatmap到底咋算的。只有animals？图让我又傻了。</p>
+<p>续：有threshhold啊笨蛋。背景什么的值会非常低，但是那时已经不会再考虑了。以及后续实验验证，threshold调低效果会更好<img src="file:///C:\Users\dell\AppData\Local\Temp\SGPicFaceTpBq\18288\000B3AE0.png" alt="img" style="zoom:50%;" /> 调到0.1之后分数直接涨了1% orz……</p>
+</li>
+</ol>
 
               </div>
               <div class="toc-container">
@@ -137,6 +156,7 @@
 <li><a href="#%E5%8A%A8%E6%9C%BA">动机</a></li>
 <li><a href="#%E5%88%9B%E6%96%B0">创新</a></li>
 <li><a href="#%E6%96%B9%E6%B3%95">方法</a></li>
+<li><a href="#%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98">一些问题</a></li>
 </ul>
 </li>
 </ul>
