@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>STEm-Seg论文阅读 | 酸希Hope_Tart</title>
-<link rel="shortcut icon" href="https://sourxi.github.io//favicon.ico?v=1621306145138">
+<link rel="shortcut icon" href="https://sourxi.github.io//favicon.ico?v=1621307018980">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://sourxi.github.io//styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="STEm-Seg论文阅读 | 酸希Hope_Tart - Atom Feed" href="https://sourxi.github.io//atom.xml">
@@ -22,7 +22,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://sourxi.github.io/">
-  <img class="avatar" src="https://sourxi.github.io//images/avatar.png?v=1621306145138" alt="">
+  <img class="avatar" src="https://sourxi.github.io//images/avatar.png?v=1621307018980" alt="">
   </a>
   <h1 class="site-title">
     酸希Hope_Tart
@@ -91,6 +91,8 @@
               
             </div>
             
+              <img class="post-feature-image" src="https://sourxi.github.io//post-images/stem-seg-lun-wen-yue-du.png" alt="">
+            
             <div class="post-content-wrapper">
               <div class="post-content">
                 <p>可能总是要给自己找点事做，于是最近误打误撞地在打天池的视频云比赛。</p>
@@ -144,7 +146,7 @@
 <p>infer过程中的step 2：“Find the corresponding embedding vector E(cj) and variances V(cj).”不存在点的集合，如何计算方差V(cj)？<code>closed</code></p>
 <p>集合是图片中所有像素点，均值是计算所有点的均值。得到中心点后，以中心点为均值，计算对应方差，从而得到预测的mask。最后把mask中的点从图片中抠掉。重复。</p>
 <p>上述是猜测，未代码证实。如果是这样，那么有一点疑惑：semantic segmentation？还是要搞清楚Heatmap到底咋算的。只有animals？图让我又傻了。</p>
-<p>续：有threshhold啊笨蛋。背景什么的值会非常低，但是那时已经不会再考虑了。以及后续实验验证，threshold调低效果会更好<img src="file:///C:\Users\dell\AppData\Local\Temp\SGPicFaceTpBq\18288\000B3AE0.png" alt="img" style="zoom:50%;" /> 调到0.1之后分数直接涨了1% orz……</p>
+<p>续：有threshhold啊笨蛋。背景什么的值会非常低，但是那时已经不会再考虑了。以及后续实验验证，threshold调低效果会更好…… 调到0.1之后分数直接涨了1% orz……</p>
 </li>
 </ol>
 
