@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Node.JS+Vue+Vite+D3 笔记 | 酸希Hope_Tart</title>
-<link rel="shortcut icon" href="https://sourxi.github.io//favicon.ico?v=1621873052658">
+<link rel="shortcut icon" href="https://sourxi.github.io//favicon.ico?v=1621904813258">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://sourxi.github.io//styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="Node.JS+Vue+Vite+D3 笔记 | 酸希Hope_Tart - Atom Feed" href="https://sourxi.github.io//atom.xml">
@@ -24,7 +24,7 @@ Vue  The Progressive JavaS..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://sourxi.github.io/">
-  <img class="avatar" src="https://sourxi.github.io//images/avatar.png?v=1621873052658" alt="">
+  <img class="avatar" src="https://sourxi.github.io//images/avatar.png?v=1621904813258" alt="">
   </a>
   <h1 class="site-title">
     酸希Hope_Tart
@@ -352,5 +352,25 @@ export default defineComponent({
       });
 
     </script>
+	
+<!--载入js，在</body>之前插入即可-->
+    <!--Leancloud 操作库:-->
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <!--Valine 的核心代码库-->
+    <script src="/media/scripts/Valine.min.js"></script>
+	<div class="comment"></div>
+	<script>
+		new Valine({
+			// AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
+			av: AV, 
+			el: '.comment',
+				lang: 'zh-cn',//设置评论语言
+        emoticon_url: 'https://cloud.panjunwen.com/alu',
+  emoticon_list: ["狂汗.png","不说话.png","汗.png","坐等.png","献花.png","不高兴.png","中刀.png","害羞.png","皱眉.png","小眼睛.png","暗地观察.png"],
+  app_id: 'hSqTTi7wcuvYXGtEFMmdOXAc-gzGzoHsz',
+  app_key: 'x1d9O43dpTmYrYCIo99oGaXo',
+  placeholder: '评论留言'
+    });
+	</script>  
   </body>
 </html>
