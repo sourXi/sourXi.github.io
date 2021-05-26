@@ -1,0 +1,275 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OpenCV+dlib初探人脸识别  | 酸希Hope_Tart</title>
+<link rel="shortcut icon" href="https://sourxi.github.io//favicon.ico?v=1622002046763">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://sourxi.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="OpenCV+dlib初探人脸识别  | 酸希Hope_Tart - Atom Feed" href="https://sourxi.github.io//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="引言
+刚刚写了6分钟，结果不小心点了叉叉没保存😅
+简单再写下，总之就是感觉调库调包就是深度学习的最终归属。不要总是带着动辄大几百MB的weights和infer/test代码，调试起来就是很烦啊！这样几句话就解决不香吗。当然效果有待提升哈..." />
+    <meta name="keywords" content="笔记" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://sourxi.github.io/">
+  <img class="avatar" src="https://sourxi.github.io//images/avatar.png?v=1622002046763" alt="">
+  </a>
+  <h1 class="site-title">
+    酸希Hope_Tart
+  </h1>
+  <p class="site-description">
+    给时间以生命。Live alive.
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              OpenCV+dlib初探人脸识别 
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-05-26
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://sourxi.github.io/tag/gmfcrh35K/" class="post-tag">
+                  # 笔记
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="引言">引言</h1>
+<p>刚刚写了6分钟，结果不小心点了叉叉没保存😅<br>
+简单再写下，总之就是感觉调库调包就是深度学习的最终归属。不要总是带着动辄大几百MB的weights和infer/test代码，调试起来就是很烦啊！这样几句话就解决不香吗。当然效果有待提升哈。</p>
+<h1 id="demo1opencv">demo1——OpenCV</h1>
+<p>需要在代码加入包<code>D:/ComputerScience/Python/Python36/Lib/site-packages/cv2/data/haarcascade_frontalface_default.xml</code></p>
+<h2 id="安装opencv">安装OpenCV</h2>
+<p>pip install opencv-python</p>
+<h2 id="代码">代码</h2>
+<pre><code>import cv2
+
+def detect(filename):
+    face_cascade = cv2.CascadeClassifier('D:/ComputerScience/Python/Python36/Lib/site-packages/cv2/data/haarcascade_frontalface_default.xml')
+
+    img = cv2.imread(filename)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+
+    for (x, y, w, h) in faces:
+        img = cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
+
+
+    cv2.imshow('Person Detected!', img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+
+if __name__ == '__main__':
+    detect('hp1.jpg')
+</code></pre>
+<h2 id="结果">结果</h2>
+<p>which should be like this……<br>
+<img src="https://sourxi.github.io//post-images/1622001363031.png" alt="" loading="lazy"><br>
+可以看到jl大姐被可怜的忽视掉了，就是因为这个结构化或者说规范化的算法不包含旋转一定角度之后的正脸特征。<br>
+如果我们把刚才改了的包改成识别眼镜，which is <code>haarcascade_eye.xml</code>，那么结果如下：<br>
+<img src="https://sourxi.github.io//post-images/1622001577663.png" alt="" loading="lazy"><br>
+which就挺无语的哈哈哈</p>
+<h1 id="demo2dlibface_recognition">demo2——dlib+face_recognition</h1>
+<h2 id="安装dlib及依赖">安装dlib及依赖</h2>
+<p><code>pip install openblas cmake dlib face_recognition</code></p>
+<h2 id="代码-2">代码</h2>
+<pre><code>#coding=utf-8
+
+import cv2
+import dlib
+
+path = &quot;hp1.jpg&quot;
+img = cv2.imread(path)
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+#人脸分类器
+detector = dlib.get_frontal_face_detector()
+# 获取人脸检测器
+predictor = dlib.shape_predictor(r&quot;D:/ComputerScience/Python/Python36/Lib\site-packages\shape_predictor_68_face_landmarks.dat&quot;)
+dets = detector(gray, 1)
+for face in dets:
+    shape = predictor(img, face)  # 寻找人脸的68个标定点
+    # 遍历所有点，打印出其坐标，并圈出来
+    for pt in shape.parts():
+        pt_pos = (pt.x, pt.y)
+        cv2.circle(img, pt_pos, 2, (0, 255, 0), 1)
+    cv2.imshow(&quot;image&quot;, img)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+</code></pre>
+<h2 id="结果-2">结果</h2>
+<p><img src="https://sourxi.github.io//post-images/1622001841010.jpg" alt="" loading="lazy"><br>
+还挺惊悚的哈哈哈。不过暂时除了特效一些场景还没想到能怎么比较好的去应用它。</p>
+<h1 id="结束啦">结束啦</h1>
+<p>感觉代码什么的其实还没好好看，不过综合最近尝试的VOS模型来讲，这种也太好用了吧！！DL要加油喔！！</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E5%BC%95%E8%A8%80">引言</a></li>
+<li><a href="#demo1opencv">demo1——OpenCV</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85opencv">安装OpenCV</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81">代码</a></li>
+<li><a href="#%E7%BB%93%E6%9E%9C">结果</a></li>
+</ul>
+</li>
+<li><a href="#demo2dlibface_recognition">demo2——dlib+face_recognition</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85dlib%E5%8F%8A%E4%BE%9D%E8%B5%96">安装dlib及依赖</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81-2">代码</a></li>
+<li><a href="#%E7%BB%93%E6%9E%9C-2">结果</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%93%E6%9D%9F%E5%95%A6">结束啦</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://sourxi.github.io/post/nodejsvuevited3-bi-ji/">
+              <h3 class="post-title">
+                Node.JS+Vue+Vite+D3 笔记
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<div id="vcomments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'hSqTTi7wcuvYXGtEFMmdOXAc-gzGzoHsz',
+            appKey: 'x1d9O43dpTmYrYCIo99oGaXo'
+        })
+    </script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://sourxi.github.io//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+	  
+  </body>
+</html>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sourxi.github.io/</id>
     <title>酸希Hope_Tart</title>
-    <updated>2021-05-26T03:39:27.961Z</updated>
+    <updated>2021-05-26T04:07:31.552Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sourxi.github.io/"/>
     <link rel="self" href="https://sourxi.github.io/atom.xml"/>
@@ -10,6 +10,85 @@
     <logo>https://sourxi.github.io/images/avatar.png</logo>
     <icon>https://sourxi.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 酸希Hope_Tart</rights>
+    <entry>
+        <title type="html"><![CDATA[OpenCV+dlib初探人脸识别 ]]></title>
+        <id>https://sourxi.github.io/post/opencvdlib-chu-tan-ren-lian-shi-bie/</id>
+        <link href="https://sourxi.github.io/post/opencvdlib-chu-tan-ren-lian-shi-bie/">
+        </link>
+        <updated>2021-05-26T03:46:48.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="引言">引言</h1>
+<p>刚刚写了6分钟，结果不小心点了叉叉没保存😅<br>
+简单再写下，总之就是感觉调库调包就是深度学习的最终归属。不要总是带着动辄大几百MB的weights和infer/test代码，调试起来就是很烦啊！这样几句话就解决不香吗。当然效果有待提升哈。</p>
+<h1 id="demo1opencv">demo1——OpenCV</h1>
+<p>需要在代码加入包<code>D:/ComputerScience/Python/Python36/Lib/site-packages/cv2/data/haarcascade_frontalface_default.xml</code></p>
+<h2 id="安装opencv">安装OpenCV</h2>
+<p>pip install opencv-python</p>
+<h2 id="代码">代码</h2>
+<pre><code>import cv2
+
+def detect(filename):
+    face_cascade = cv2.CascadeClassifier('D:/ComputerScience/Python/Python36/Lib/site-packages/cv2/data/haarcascade_frontalface_default.xml')
+
+    img = cv2.imread(filename)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+
+    for (x, y, w, h) in faces:
+        img = cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
+
+
+    cv2.imshow('Person Detected!', img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+
+if __name__ == '__main__':
+    detect('hp1.jpg')
+</code></pre>
+<h2 id="结果">结果</h2>
+<p>which should be like this……<br>
+<img src="https://sourxi.github.io//post-images/1622001363031.png" alt="" loading="lazy"><br>
+可以看到jl大姐被可怜的忽视掉了，就是因为这个结构化或者说规范化的算法不包含旋转一定角度之后的正脸特征。<br>
+如果我们把刚才改了的包改成识别眼镜，which is <code>haarcascade_eye.xml</code>，那么结果如下：<br>
+<img src="https://sourxi.github.io//post-images/1622001577663.png" alt="" loading="lazy"><br>
+which就挺无语的哈哈哈</p>
+<h1 id="demo2dlibface_recognition">demo2——dlib+face_recognition</h1>
+<h2 id="安装dlib及依赖">安装dlib及依赖</h2>
+<p><code>pip install openblas cmake dlib face_recognition</code></p>
+<h2 id="代码-2">代码</h2>
+<pre><code>#coding=utf-8
+
+import cv2
+import dlib
+
+path = &quot;hp1.jpg&quot;
+img = cv2.imread(path)
+gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+#人脸分类器
+detector = dlib.get_frontal_face_detector()
+# 获取人脸检测器
+predictor = dlib.shape_predictor(r&quot;D:/ComputerScience/Python/Python36/Lib\site-packages\shape_predictor_68_face_landmarks.dat&quot;)
+dets = detector(gray, 1)
+for face in dets:
+    shape = predictor(img, face)  # 寻找人脸的68个标定点
+    # 遍历所有点，打印出其坐标，并圈出来
+    for pt in shape.parts():
+        pt_pos = (pt.x, pt.y)
+        cv2.circle(img, pt_pos, 2, (0, 255, 0), 1)
+    cv2.imshow(&quot;image&quot;, img)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+</code></pre>
+<h2 id="结果-2">结果</h2>
+<p><img src="https://sourxi.github.io//post-images/1622001841010.jpg" alt="" loading="lazy"><br>
+还挺惊悚的哈哈哈。不过暂时除了特效一些场景还没想到能怎么比较好的去应用它。</p>
+<h1 id="结束啦">结束啦</h1>
+<p>感觉代码什么的其实还没好好看，不过综合最近尝试的VOS模型来讲，这种也太好用了吧！！DL要加油喔！！</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Node.JS+Vue+Vite+D3 笔记]]></title>
         <id>https://sourxi.github.io/post/nodejsvuevited3-bi-ji/</id>
