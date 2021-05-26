@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sourxi.github.io/</id>
     <title>酸希Hope_Tart</title>
-    <updated>2021-05-26T15:22:23.718Z</updated>
+    <updated>2021-05-26T15:53:12.054Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sourxi.github.io/"/>
     <link rel="self" href="https://sourxi.github.io/atom.xml"/>
@@ -369,91 +369,6 @@ import BarChart from &quot;./components/BarChart.vue&quot;;
         <updated>2021-03-28T08:58:23.000Z</updated>
         <content type="html"><![CDATA[<p>https://www.youtube.com/watch?v=EaY5QiZwSP4<br>
 https://github.com/llSourcell/How_to_simulate_a_self_driving_car</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[题解 || #1-两数之和#]]></title>
-        <id>https://sourxi.github.io/post/ti-jie-or-1-liang-shu-zhi-he/</id>
-        <link href="https://sourxi.github.io/post/ti-jie-or-1-liang-shu-zhi-he/">
-        </link>
-        <updated>2021-02-17T06:58:43.000Z</updated>
-        <summary type="html"><![CDATA[<h2 id="题目描述">📜 题目描述</h2>
-<p>给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值的那两个整数，并返回它们的数组下标。<br>
-你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。<br>
-你可以按任意顺序返回答案。</p>
-<pre><code>示例 1：
-输入：nums = [2,7,11,15], target = 9
-输出：[0,1]
-解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
-</code></pre>
-]]></summary>
-        <content type="html"><![CDATA[<h2 id="题目描述">📜 题目描述</h2>
-<p>给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值的那两个整数，并返回它们的数组下标。<br>
-你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。<br>
-你可以按任意顺序返回答案。</p>
-<pre><code>示例 1：
-输入：nums = [2,7,11,15], target = 9
-输出：[0,1]
-解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
-</code></pre>
-<!-- more -->
-<h2 id="方法一暴力法">💡 方法一：暴力法</h2>
-<p>这个方法是我最开始想到的，也就是两重循环，分别枚举<code>a[i]</code>和找出<code>target - a[I]</code>. 值得注意的是题中<strong>数组中同一个元素不能使用两遍</strong> 这句话，也就是<code>i</code>和<code>j</code>不相等。错过这一点让我白白提交了三次orz....</p>
-<p><strong>代码：</strong></p>
-<pre><code>class Solution {
-public:
-    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) {
-        vector&lt;int&gt; results;
-        for(int i=0;i&lt;nums.size();i++){
-            for(int j=i+1;j&lt;nums.size();j++){
-                if(nums[i]+nums[j]==target){
-                    results.push_back(i);
-                    results.push_back(j);
-                    return results;
-                }
-            }
-        }
-        return results;
-    }
-};
-</code></pre>
-<p><strong>语法点：</strong><br>
-vector可以使用花括号<code>{}</code>初始化，而不必分别<code>push_back</code>。</p>
-<p><strong>复杂度分析：</strong></p>
-<ul>
-<li>时间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>N</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
-<li>空间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></li>
-</ul>
-<h2 id="方法二哈希法">💡 方法二：哈希法</h2>
-<p>两次哈希表是官网给出的一种方法，使用这种方法可以将寻找<code>target-a[i]</code>的时间复杂度降低为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>，也就是建立<code>a[i]</code>到<code>i</code>的哈希表。对于每个<code>a[i]</code>，首先查找哈希表中是否存在<code>target-a[i]</code>，若存在，over；若不存在，则将自己放到表中。我想也可以理解为，<code>a[i]</code>先和自己之前的元素匹配，若无匹配，则留着让后面的元素和自己匹配😂（从师妹变师姐既视感😭）</p>
-<p><strong>代码：</strong></p>
-<pre><code>class Solution {
-public:
-    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) {
-        unordered_map&lt;int, int&gt; hashtable;
-        for (int i = 0; i &lt; nums.size(); ++i) {
-            auto it = hashtable.find(target - nums[i]);
-            if (it != hashtable.end()) {
-                return {it-&gt;second, i};
-            }
-            hashtable[nums[i]] = i;
-        }
-        return {};
-    }
-};
-</code></pre>
-<p><strong>语法点：</strong></p>
-<ol>
-<li>C++中用<code>unordered_map</code>实现哈希表的功能，因此是无序的，操作与<code>map</code>类似，而<code>map</code>是有序的。</li>
-<li><code>auto</code>可以在声明变量的时候根据变量初始值的类型自动为此变量选择匹配的类型（发生在编译时期）。注意以下两点：① <code>auto</code>声明的变量必须要初始化，否则编译器不能判断变量的类型。② <code>auto</code>不能被声明为返回值，<code>auto</code>不能作为形参，<code>auto</code>不能被修饰为模板参数</li>
-<li><code>find</code>函数用来判断某个键是否存在。如果<code>key</code>存在，则<code>find</code>返回<code>key</code>对应的迭代器，如果<code>key</code>不存在，则<code>find</code>返回<code>unordered_map::end</code>。因此可以通过<code>map.find(key) == map.end()</code>来判断<code>key</code>是否存在于当前的<code>unordered_map</code>中。</li>
-<li>python中直接用<code>dict()</code>就可以。</li>
-</ol>
-<p><strong>复杂度分析：</strong></p>
-<ul>
-<li>时间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span></li>
-<li>空间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>, for the hash table. （果然是还那句空间换时间啊...）</li>
-</ul>
 ]]></content>
     </entry>
     <entry>
