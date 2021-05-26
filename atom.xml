@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sourxi.github.io/</id>
     <title>酸希Hope_Tart</title>
-    <updated>2021-05-25T01:55:05.940Z</updated>
+    <updated>2021-05-26T02:51:46.695Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sourxi.github.io/"/>
     <link rel="self" href="https://sourxi.github.io/atom.xml"/>
@@ -25,17 +25,38 @@
 <li>Npm 包管理工具（官方）</li>
 <li>Yarn  包管理工具（第三方）</li>
 </ul>
+<h1 id="nodejs-初尝试">Node.js 初尝试👊</h1>
+<p><a href="http://nodejs.cn/download/">[下载地址]</a><br>
+控制台输入<code>node --version</code>验证是否已安装成功<br>
+创建js文件 hello.js</p>
+<pre><code>var http=require(&quot;http&quot;);
+http.createServer(function(request,response){
+    response.writeHead(200,{'Content-Type':'text/plain'});
+
+    response.end('Hello World\n');
+}).listen(8888);
+
+console.log('Sever running at http://127.0.01:8888/');
+</code></pre>
+<p>在hello.js所在目录下，运行文件<br>
+<img src="https://sourxi.github.io//post-images/1621996284817.png" alt="" loading="lazy"><br>
+浏览器打开<code>http://127.0.01:8888</code><br>
+<img src="https://sourxi.github.io//post-images/1621996368500.png" alt="" loading="lazy"></p>
+<h1 id="安装yarn️">安装yarn✂️</h1>
+<p>执行命令<code>npm install yarn</code></p>
+<h1 id="git也是必须的win10这里安装过安装包去官网就可以找到">git也是必须的，win10这里安装过，安装包去官网就可以找到</h1>
 <h1 id="vuevite-初尝试">Vue/Vite 初尝试👊</h1>
 <ol>
 <li>启动脚手架<br>
-<code>yarn create @vitejs/app a-test-app</code> 生成预置的快速启动模板.</li>
-<li>进入项目目录，<code>yarn build</code> + <code>yarn dev</code>使用开发模式启动</li>
+<code>yarn create @vitejs/app vue-d3-test</code> 生成预置的快速启动模板.</li>
+<li>进入项目目录<code>cd a-test-app</code>，<code>yarn build</code> + <code>yarn dev</code>使用开发模式启动</li>
 <li>网址输入<code>http://localhost:8080</code><br>
-<img src="file://C:/Users/dell/Documents/Gridea/post-images/1621871161397.png" style="zoom:60%" /></li>
+<img src="https://sourxi.github.io//post-images/1621995807314.png" alt="" loading="lazy"></li>
 </ol>
 <h1 id="vue目录结构">Vue目录结构</h1>
+<figure data-type="image" tabindex="1"><img src="https://sourxi.github.io//post-images/1621996793755.png" alt="" loading="lazy"></figure>
 <ul>
-<li><strong>node_modules</strong>  不用管，极其不重要。即便手贱删掉，再次启动的时候也会不要脸地贴回来😃</li>
+<li><strong>node_modules</strong>  不用管，极其不重要。即便手贱删掉，再次启动的时候也会🗡🗡地贴回来😃</li>
 <li><strong>public</strong>  静态资源目录。大概就是图片啊、json啊什么的放在这里就好了</li>
 <li><strong>src</strong>  重头戏来了。
 <ul>
@@ -49,7 +70,12 @@
 </li>
 </ul>
 <h1 id="d3直方图">D3直方图📊</h1>
-<p>代码如下：</p>
+<p>安装D3<br>
+<code>yarn add d3</code><br>
+安装axios<br>
+<code>yarn add axios</code></p>
+<p>代码如下<br>
+BarChart.vue</p>
 <pre><code>&lt;template&gt;
   &lt;h2&gt;201811153001 孙圆希 直方图&lt;/h2&gt;
   &lt;div id=&quot;bar-chart-container&quot;&gt;&lt;/div&gt;
@@ -173,6 +199,25 @@ export default defineComponent({
 });
 &lt;/script&gt;
 </code></pre>
+<p>App.vue</p>
+<pre><code>&lt;template&gt;
+  &lt;img alt=&quot;Vue logo&quot; src=&quot;./assets/logo.png&quot; /&gt;
+  &lt;HelloWorld msg=&quot;Hello&quot; /&gt;
+  &lt;bar-chart /&gt;
+  &lt;test-axios /&gt;
+
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import HelloWorld from &quot;./components/HelloWorld.vue&quot;;
+import TestAxios from &quot;./components/TestAxios.vue&quot;;
+import BarChart from &quot;./components/BarChart.vue&quot;;
+&lt;/script&gt;
+</code></pre>
+<h1 id="结束">结束</h1>
+<p>至此，我们的vue+d3可视化项目页面大概长这样。<br>
+<img src="https://sourxi.github.io//post-images/1621997340530.jpg" alt="" loading="lazy"><br>
+我在学习中的感受是，vue热重载真的很好用，u1s1比我现在写博客的这个还好用，不用考虑浏览器数据什么的真的很香。不过vue框架要想用好用熟绝不是这一两节课就能一蹴而就的，有时间的话好好研究一下应该会挺有趣的啦👽👻</p>
 ]]></content>
     </entry>
     <entry>
