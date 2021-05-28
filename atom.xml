@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sourxi.github.io/</id>
     <title>酸希Hope_Tart</title>
-    <updated>2021-05-27T01:25:53.951Z</updated>
+    <updated>2021-05-28T01:18:51.466Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sourxi.github.io/"/>
     <link rel="self" href="https://sourxi.github.io/atom.xml"/>
@@ -10,6 +10,34 @@
     <logo>https://sourxi.github.io/images/avatar.png</logo>
     <icon>https://sourxi.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 酸希Hope_Tart</rights>
+    <entry>
+        <title type="html"><![CDATA[数据可视化之作业总结]]></title>
+        <id>https://sourxi.github.io/post/shu-ju-ke-shi-hua-zhi-zuo-ye-zong-jie/</id>
+        <link href="https://sourxi.github.io/post/shu-ju-ke-shi-hua-zhi-zuo-ye-zong-jie/">
+        </link>
+        <updated>2021-05-28T00:28:10.000Z</updated>
+        <content type="html"><![CDATA[<p>很喜欢数据可视化这门课，感觉是集艺术与科技之大成。这篇来简单梳理下自己的作业。（暂时是贴图形式，未来希望可以部署到服务器上，时时刻刻都能打开555）</p>
+<h1 id="basic直方图">basic直方图</h1>
+<p>第一个实际接触svg操作的作业，数据简单，图形简单，发现圆角矩形，时间花在调色上了，无语。<br>
+<img src="https://sourxi.github.io//post-images/1622163296750.png" alt="" loading="lazy"></p>
+<h1 id="basic-随机树">basic 随机树</h1>
+<p>递归实现随机树。服气，反正前几次作业基本时间上都花在调色上了，是想当什么调色大师吗，明明有写好的api你不查。哦对，递归层数不能太多，可能是CPU拉跨的原因吧，树长得就不能很茂密……CPU和GPU原来是土壤和水源啊。<br>
+<img src="https://sourxi.github.io//post-images/1622163696679.jpg" alt="" loading="lazy"></p>
+<h1 id="basic-随机文字树">basic 随机文字树</h1>
+<p>与上图使用技术基本相同，就是把自底向上改成了自顶向下……数据部分主要在传承家族荣光哈哈哈orz<br>
+<img src="https://sourxi.github.io//post-images/1622164538788.png" alt="" loading="lazy"></p>
+<h1 id="d3直方图">D3直方图</h1>
+<p>作为数据可视化的一个d3作业，使用的数据比较简单。由于不知道有colorScheme这种东西，于是花了好久调颜色orz<br>
+<img src="https://sourxi.github.io//post-images/1622162709109.jpg" alt="" loading="lazy"></p>
+<h1 id="d3饼图与直方图链接数据库">D3饼图与直方图+链接数据库</h1>
+<p>这个作业其实分了两次完成。第一次是仅完成饼图和直方图的绘制，第二次加入了链接数据库的操作，which 在真实场景中更常见。第二次的svg图形也在第一次基础上有改动，这里只放出第二版。在本作品中，有3个交互场景：<br>
+- 鼠标悬停在不同bar上，会显示对应数据<br>
+- 鼠标悬停在不同pie上，会显示对应百分比<br>
+- 鼠标点击不同pie，bar chart会切换为对应国家的图形<br>
+（其实或许可以加一个：点击不同图例，bar切换为对应国家的图形<br>
+<img src="https://sourxi.github.io//post-images/1622163199513.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[OpenCV+dlib初探人脸识别 ]]></title>
         <id>https://sourxi.github.io/post/opencvdlib-chu-tan-ren-lian-shi-bie/</id>

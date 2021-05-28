@@ -3,101 +3,123 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>题解 || #1-两数之和# | 酸希Hope_Tart</title>
-<link rel="shortcut icon" href="https://sourxi.github.io//favicon.ico?v=1622044387899">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<meta name="description" content="给时间以生命。Live alive." />
+<link rel="shortcut icon" href="https://sourxi.github.io//favicon.ico">
 <link rel="stylesheet" href="https://sourxi.github.io//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="题解 || #1-两数之和# | 酸希Hope_Tart - Atom Feed" href="https://sourxi.github.io//atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
-
-
+<script src="https://sourxi.github.io//media/js/jquery.min.js"></script>
+<script src="https://sourxi.github.io//media/js/masonry.pkgd.min.js"></script>
+<script src="https://sourxi.github.io//media/js/aos.js"></script>
+<script src="https://sourxi.github.io//media/js/pace.min.js"></script>
+<script src="https://sourxi.github.io//media/js/view-image.min.js"></script>
+<script src="https://sourxi.github.io//media/js/jquery.magnific-popup.min.js"></script>
+<script src="https://sourxi.github.io//media/js/functions.js"></script>
+    <meta name="referrer" content="never">
     <meta name="description" content="📜 题目描述
 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值的那两个整数，并返回它们的数组下标。
 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。
 你可以按任意顺序返回答案..." />
     <meta name="keywords" content="LeetCode" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="https://sourxi.github.io//media/js/waterfall.min.js"></script>
+    <script src="https://sourxi.github.io//media/js/prism.min.js"></script>
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://sourxi.github.io/">
-  <img class="avatar" src="https://sourxi.github.io//images/avatar.png?v=1622044387899" alt="">
-  </a>
-  <h1 class="site-title">
-    酸希Hope_Tart
-  </h1>
-  <p class="site-description">
-    给时间以生命。Live alive.
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
-  </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
+            <header id="header" class="grid-container">
+        <!-- start: .menu-wrapper -->
+        <div class="menu-mobile"> 
+          <i class="fa fa-reorder"></i>
+        </div>
+        <div class="menu-wrapper">
+          <div class="">
+            <div class="logo">
+              <a href="https://sourxi.github.io/"><img src="/media/images/logoo.png" alt=""></a>
+            </div>
+            <!-- start: .main-nav -->
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              题解 || #1-两数之和#
-            </h2>
-            <div class="post-info">
-              <span>
-                2021-02-17
-              </span>
-              <span>
-                4 min read
-              </span>
+            <nav class="main-nav grid-container grid-parent">
+              <ul id="menu-header" class="menu gradient-effect">
+                <li class=""><a href="https://sourxi.github.io/" class="menu">首页</a></li>
+                
+                  <li class="" >
+                    <a href="/" class="menu">
+                      首页
+                    </a>
+                  </li>
+                
+                  <li class="" >
+                    <a href="/archives" class="menu">
+                      归档
+                    </a>
+                  </li>
+                
+                  <li class="" >
+                    <a href="/tags" class="menu">
+                      标签
+                    </a>
+                  </li>
+                
+                  <li class="" >
+                    <a href="/post/about" class="menu">
+                      关于
+                    </a>
+                  </li>
+                
+                <li class="search-menu-item hide-on-mobile hide-on-tablet"><a href="#search-lightbox" class="lightbox mfp-inline"><i class="fa fa-search-line"></i></a></li>
+              </ul>
+            </nav>
+            <a href="#search-lightbox" class="lightbox epcl-search-button mfp-inline hide-on-tablet hide-on-desktop"><i class="fa fa-search-line"></i></a>
+            <!-- end: .main-nav -->
+            <div class="clear"></div>
+            <div class="border hide-on-tablet hide-on-mobile"></div>
+          </div>    
+          <div class="clear"></div>
+        </div>
+        <!-- end: .menu-wrapper -->
+        <div class="clear"></div>
+      </header>
+      <div class="hide-on-mobile hide-on-tablet hide-on-desktop">
+        <div id="search-lightbox" class="grid-container grid-small grid-parent mfp-hide">
+          <div class="search-wrapper section">
+            <form id="gridea-search-form" data-update="1622164721830" action="/search/index.html" class="search-form" _lpchecked="1">
+              <input type="text" name="q" id="s" value="" class="search-field" placeholder="搜点啥..." aria-label="搜点啥..." required="">
+              <button type="submit" class="submit" aria-label="Submit">
+                <i class="fa fa-search-line"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <main id="single" class="main grid-container fullcover no-sidebar aos-init aos-animate" data-aos="fade">
+
+        <div class="center content">
+          <div class="featured-image cover" style="background-image: url('https://sourxi.github.io//post-images/ti-jie-or-1-liang-shu-zhi-he.png');">
+            <div class="meta top"> 
+              <time class="meta-info" style="float:left;" datetime="2021-02-17"><i class="fa fa-calendar"></i><span class="lately">3 个月前</span></time>
               
-                <a href="https://sourxi.github.io/tag/AXfHtigY9/" class="post-tag">
-                  # LeetCode
-                </a>
+              <a href="https://sourxi.github.io/post/ti-jie-or-1-liang-shu-zhi-he/#comments" class="comments meta-info" title="">
+                <i class="fa fa-comment remixicon"></i><span class="comment-count valine-comment-count" data-xid="/ti-jie-or-1-liang-shu-zhi-he/"> </span>
+              </a>
+              <span id="/ti-jie-or-1-liang-shu-zhi-he/" class="leancloud_visitors views-counter meta-info" title=""><i class="fa fa-leancloud remixicon"></i><span class="leancloud-visitors-count"></span></span>
               
             </div>
-            
-              <img class="post-feature-image" src="https://sourxi.github.io//post-images/ti-jie-or-1-liang-shu-zhi-he.png" alt="">
-            
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <h2 id="题目描述">📜 题目描述</h2>
+            <div class="info">
+              <div class="tags ">
+                
+                      <a href="https://sourxi.github.io/tag/AXfHtigY9/" class="ctag ctag-0 ctag-AXfHtigY9" aria-label="">LeetCode</a>
+                    
+              </div>
+              <h1 class="title ularge white bold">题解 || #1-两数之和#</h1>
+            </div>
+          </div>
+        </div>  
+
+        <div class="epcl-page-wrapper">
+          <div class="left-content grid-70 np-mobile">
+            <article class="main-article post">
+              <section class="post-content">
+                <div class="text">
+                  <h2 id="题目描述">📜 题目描述</h2>
 <p>给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值的那两个整数，并返回它们的数组下标。<br>
 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。<br>
 你可以按任意顺序返回答案。</p>
@@ -164,92 +186,205 @@ public:
 <li>空间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>N</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(N)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mclose">)</span></span></span></span>, for the hash table. （果然是还那句空间换时间啊...）</li>
 </ul>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0">📜 题目描述</a></li>
-<li><a href="#%E6%96%B9%E6%B3%95%E4%B8%80%E6%9A%B4%E5%8A%9B%E6%B3%95">💡 方法一：暴力法</a></li>
-<li><a href="#%E6%96%B9%E6%B3%95%E4%BA%8C%E5%93%88%E5%B8%8C%E6%B3%95">💡 方法二：哈希法</a></li>
-</ul>
-</li>
-</ul>
+                </div>
+                <div class="clear"></div>
+              </section>
+            </article>
+            <div class="clear"></div>
 
+            <section class="related section">
+              
+              
+
+                <div class="clear"></div>
+            </section>
+
+              <div class="clear"></div>
+              
+            
+              <div id="comments" class="bg-white hosted ">
+                
+                  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+<div class="clear"></div>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '',
+    clientSecret: '',
+    repo: '',
+    owner: '',
+    admin: [''],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+</script>
+
+                
+                
               </div>
+            
+
             </div>
-          </article>
+          </div>
+      </main>
+
+          <footer id="footer" class="grid-container">
+        <div class="widgets row gradient-effect">
+            <div class="default-sidebar border-effect">
+              <div class="grid-33 tablet-grid-50 mobile-grid-100">
+                <section id="tag_cloud-2" class="widget widget_epcl_posts_thumbs underline-effect">
+                  <h4 class="widget-title title white bordered">最新文章</h4>
+                  
+                  
+                  <article class="item post-0 post type-post status-publish format-standard has-post-thumbnail hentry">
+                    <a href="https://sourxi.github.io/post/shu-ju-ke-shi-hua-zhi-zuo-ye-zong-jie/" class="thumb hover-effect">
+                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/gridea.jpg');"></span>
+                    </a>
+                    <div class="info gradient-effect">
+                      <time datetime="2021-05-28">2021-05-28</time>
+                      <h4 class="title usmall">
+                        <a href="https://sourxi.github.io/post/shu-ju-ke-shi-hua-zhi-zuo-ye-zong-jie/">数据可视化之作业总结</a>
+                      </h4>
+                    </div>
+                    <div class="clear"></div>
+                  </article>
+                  
+                  
+                  
+                  <article class="item post-1 post type-post status-publish format-standard has-post-thumbnail hentry">
+                    <a href="https://sourxi.github.io/post/opencvdlib-chu-tan-ren-lian-shi-bie/" class="thumb hover-effect">
+                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/gridea.jpg');"></span>
+                    </a>
+                    <div class="info gradient-effect">
+                      <time datetime="2021-05-26">2021-05-26</time>
+                      <h4 class="title usmall">
+                        <a href="https://sourxi.github.io/post/opencvdlib-chu-tan-ren-lian-shi-bie/">OpenCV+dlib初探人脸识别 </a>
+                      </h4>
+                    </div>
+                    <div class="clear"></div>
+                  </article>
+                  
+                  
+                  
+                  <article class="item post-2 post type-post status-publish format-standard has-post-thumbnail hentry">
+                    <a href="https://sourxi.github.io/post/nodejsvuevited3-bi-ji/" class="thumb hover-effect">
+                      <span class="fullimage cover" style="display:block;border-radius:50%;background-image: url('/media/images/gridea.jpg');"></span>
+                    </a>
+                    <div class="info gradient-effect">
+                      <time datetime="2021-05-24">2021-05-24</time>
+                      <h4 class="title usmall">
+                        <a href="https://sourxi.github.io/post/nodejsvuevited3-bi-ji/">Node.JS+Vue+Vite+D3 笔记</a>
+                      </h4>
+                    </div>
+                    <div class="clear"></div>
+                  </article>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <div class="clear"></div>
+                </section>
+              </div>
+
+              <div class="grid-33 tablet-grid-50 mobile-grid-100">
+                <section id="tag_cloud-2" class="widget widget_tag_cloud underline-effect">
+                  <h4 class="widget-title title white bordered">标签云</h4>
+                  <div class="tagcloud">
+                    
+                      <a href="https://sourxi.github.io/tag/gmfcrh35K/" class="ctag ctag-0 ctag-gmfcrh35K" aria-label="">笔记</a>
+                    
+                      <a href="https://sourxi.github.io/tag/VoKwkAHeV/" class="ctag ctag-1 ctag-VoKwkAHeV" aria-label="">视频理解</a>
+                    
+                      <a href="https://sourxi.github.io/tag/hHWAoF7vG/" class="ctag ctag-2 ctag-hHWAoF7vG" aria-label="">我</a>
+                    
+                      <a href="https://sourxi.github.io/tag/H0gZJffix/" class="ctag ctag-3 ctag-H0gZJffix" aria-label="">推荐系统</a>
+                    
+                  </div>
+                  <div class="clear"></div>
+                </section>
+              </div>
+
+              <div class="grid-33 tablet-grid-50 mobile-grid-100">
+                <section id="epcl_about-2" class="widget widget_epcl_about underline-effect">
+                  <h4 class="widget-title title white bordered">关于我</h4>
+                  <div class="avatar">
+                    <a href="" class="translate-effect thumb"><span class="fullimage cover" style="background-image: url(https://sourxi.github.io//images/avatar.png);"></span></a>
+                  </div>
+                  <div class="info">
+                    <h4 class="title small author-name gradient-effect no-margin"><a href="">酸希Hope_Tart</a></h4>
+                    <p class="founder">给时间以生命。Live alive.</p>
+                    <div class="social">
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                        
+                      
+                    </div> 
+                  </div>
+                  <div class="clear"></div>
+                  </section>
+              </div>
+
+            </div>
+            <div class="clear"></div>
         </div>
 
+        <div class="logo">
+          <a href="https://sourxi.github.io/"><img src="/media/images/gridea.png" alt=""></a>
+        </div>
+        <p class="published border-effect">
+          ©2019 共 9 篇文章
+          <br/>
+          Theme <a href="https://gridea.dev/" target="_blank">「breek」</a> Powered by <a href="https://gridea.dev/" target="_blank">「Gridea」</a>
+        </p>
         
+        <a href="javascript:void(0)" id="back-to-top" class="epcl-button dark" style="display:none">
+          <i class="fa fa-arrow"></i>
+        </a>
+    </footer>
+    
+    <div class="clear"></div>
 
         
-          
-            <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-<div id="vcomments"></div>
-    <script>
-        new Valine({
-            el: '#vcomments',
-            appId: 'hSqTTi7wcuvYXGtEFMmdOXAc-gzGzoHsz',
-            appKey: 'x1d9O43dpTmYrYCIo99oGaXo'
-        })
-    </script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/valine/1.3.10/Valine.Pure.min.js"></script>
+<script>
+    new Valine({
+        el: '#comments',
+        appId: 'false' ,
+        appKey: 'false',
+        pageSize: 30,
+        placeholder: '既然来了，那就留个痕迹吧~',
+        visitor: false // 阅读量统计
+    })
+</script>
+    
 
-          
+      
+    <script src="https://sourxi.github.io//media/js/functions-post.js"></script>
 
-          
-        
-
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://sourxi.github.io//atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
-      </div>
     </div>
-
-    <script>
-      hljs.initHighlightingOnLoad()
-
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
-
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
-
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
-
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
-
-    </script>
-	  
+    <!-- end: #wrapper -->
   </body>
 </html>
