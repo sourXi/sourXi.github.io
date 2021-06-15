@@ -2,24 +2,22 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Hello Gridea | 酸希Hope_Tart</title>
+<title>初步理解flask | 酸希Hope_Tart</title>
 <link rel="shortcut icon" href="https://sourxi.github.io//favicon.ico?v=1623739186075">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://sourxi.github.io//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Hello Gridea | 酸希Hope_Tart - Atom Feed" href="https://sourxi.github.io//atom.xml">
+<link rel="alternate" type="application/atom+xml" title="初步理解flask | 酸希Hope_Tart - Atom Feed" href="https://sourxi.github.io//atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="👏  欢迎使用 Gridea ！
-✍️  Gridea 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...
-
-Github
-Gridea 主页
-示例网站
-特性👇
-📝  你可以使用最酷的 Markdo..." />
-    <meta name="keywords" content="Gridea" />
+    <meta name="description" content="总
+大体来说，flask一定是属于前端的部分。而当我们只局限于前端内部的时候，flask与真正的html相比，就稍微“靠后”了一点。
+详细说说
+事情是这样的。
+我们可以将flask看作html和后端数据之间的桥梁。
+最前端由几个html文件..." />
+    <meta name="keywords" content="笔记" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -81,56 +79,39 @@ Gridea 主页
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              Hello Gridea
+              初步理解flask
             </h2>
             <div class="post-info">
               <span>
-                2018-12-12
+                2021-06-15
               </span>
               <span>
-                2 min read
+                1 min read
               </span>
               
-                <a href="https://sourxi.github.io/tag/2K2se2CHU/" class="post-tag">
-                  # Gridea
+                <a href="https://sourxi.github.io/tag/gmfcrh35K/" class="post-tag">
+                  # 笔记
                 </a>
               
             </div>
             
-              <img class="post-feature-image" src="https://sourxi.github.io//post-images/hello-gridea.png" alt="">
-            
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+                <h1 id="总">总</h1>
+<p>大体来说，flask一定是属于前端的部分。而当我们只局限于前端内部的时候，flask与真正的html相比，就稍微“靠后”了一点。</p>
+<h1 id="详细说说">详细说说</h1>
+<p>事情是这样的。<br>
+<mark>我们可以将flask看作html和后端数据之间的桥梁。</mark><br>
+最前端由几个html文件组成，最后端由数据库以及处理后的数据组成。最前端被称为“模板文件”，我把它当作是高中学案一样的东西：主要食用方法是填空，每个空对应一个命名。flask负责从后端将数据填入这些空里。有时候有一些空留出来也是为了让前端用户去输入信息，这个时候前端数据也要传回来，那么flask就负责接收这些数据，传给后端。</p>
+<h1 id="总的来说">总的来说</h1>
+<p>这样一来，<mark>好像flask就是个店小二一样，前前后后当跑腿的，闪送的是数据而已😅</mark>当然flask还有很多其他功能要去发掘，但是今天的理解让我终于对flask有了一个完整的认识。</p>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E7%89%B9%E6%80%A7">特性👇</a></li>
-</ul>
-</li>
+<li><a href="#%E6%80%BB">总</a></li>
+<li><a href="#%E8%AF%A6%E7%BB%86%E8%AF%B4%E8%AF%B4">详细说说</a></li>
+<li><a href="#%E6%80%BB%E7%9A%84%E6%9D%A5%E8%AF%B4">总的来说</a></li>
 </ul>
 
               </div>
@@ -138,6 +119,15 @@ Gridea 主页
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://sourxi.github.io/post/shu-ju-ke-shi-hua-zhi-zuo-ye-zong-jie/">
+              <h3 class="post-title">
+                数据可视化之作业总结
+              </h3>
+            </a>
+          </div>
         
 
         
