@@ -2,14 +2,14 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sourxi.github.io/</id>
     <title>酸希Hope_Tart</title>
-    <updated>2021-12-18T16:42:15.352Z</updated>
+    <updated>2022-01-03T06:57:15.610Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sourxi.github.io/"/>
     <link rel="self" href="https://sourxi.github.io/atom.xml"/>
     <subtitle>给时间以生命。Live alive.</subtitle>
     <logo>https://sourxi.github.io/images/avatar.png</logo>
     <icon>https://sourxi.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, 酸希Hope_Tart</rights>
+    <rights>All rights reserved 2022, 酸希Hope_Tart</rights>
     <entry>
         <title type="html"><![CDATA[再见，大创]]></title>
         <id>https://sourxi.github.io/post/zai-jian-da-chuang/</id>
