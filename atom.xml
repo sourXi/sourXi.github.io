@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://sourxi.github.io/</id>
     <title>酸希Hope_Tart</title>
-    <updated>2022-01-04T05:01:53.983Z</updated>
+    <updated>2022-01-04T06:53:50.662Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://sourxi.github.io/"/>
     <link rel="self" href="https://sourxi.github.io/atom.xml"/>
@@ -10,6 +10,247 @@
     <logo>https://sourxi.github.io/images/avatar.png</logo>
     <icon>https://sourxi.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, 酸希Hope_Tart</rights>
+    <entry>
+        <title type="html"><![CDATA[Vue3初尝试-Vue Mastery-Beginner Path]]></title>
+        <id>https://sourxi.github.io/post/vue3-chu-chang-shi-vue-mastery-beginner-path/</id>
+        <link href="https://sourxi.github.io/post/vue3-chu-chang-shi-vue-mastery-beginner-path/">
+        </link>
+        <updated>2022-01-03T07:19:25.000Z</updated>
+        <summary type="html"><![CDATA[<p>前两天试写了第一个项目。good，but simple。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>前两天试写了第一个项目。good，but simple。</p>
+<!-- more -->
+<h1 id="创建项目-no-cli">创建项目-No CLI</h1>
+<p>初级选手暂时还不需要用脚手架，所以目录只是 a very simple and normal structure like this :</p>
+<pre><code>📁assets（图片和CSS for now）
+📁components（any components' js in need）
+📄index.html（主页/入口）
+📄main.js（主页需要的js）
+</code></pre>
+<h2 id="indexhtml">index.html</h2>
+<p>除了普通页面的框架和css导入等，要做的事情是以下3个：</p>
+<ol>
+<li>import app：导入main.js</li>
+<li>import components：导入components的js</li>
+<li>mount app：<code>&lt;script&gt;const mountedApp = app.mount('#app')&lt;/script&gt;</code></li>
+</ol>
+<h2 id="mainjs">main.js</h2>
+<pre><code class="language-javascript">const app = Vue.createApp({
+    data() {
+        return { /* 数据项声明，在html里可以用{{ xxx }}直接引用 */ }
+    },
+    methods: { /* 一些函数 */ }
+})
+</code></pre>
+<h2 id="components">components</h2>
+<p>组件名称.js</p>
+<pre><code class="language-javascript">app.component('组件名称', {
+    props: {},
+    template: ``,
+    data() {
+        return {}
+    },
+    methods: {},
+    computed: {}
+})
+</code></pre>
+<p>以上是一些模板，可能之后的你回忆起来更直观？idk🙉</p>
+<h1 id="属性绑定-attribute-binding">属性绑定-Attribute Binding</h1>
+<p>把一个标签中的属性和一个表达式绑定在一起，从而可以动态调用data中的数据。<br>
+<code>&lt;img :src=&quot;image&quot;&gt;</code><br>
+src是当前的属性，&quot;image&quot;是表达式。冒号<code>:</code>是<code>v-bind:</code>的<strong>简写</strong>。此时data()如下：</p>
+<pre><code class="language-javascript">data() {
+        return {
+            image: './path'          
+        }
+    },
+</code></pre>
+<p>which 就允许在渲染html页面时主动请求what image stands for，从而赋值。<br>
+类似的还有<code>&lt;a :href=&quot;url&quot;&gt;</code>等等。</p>
+<h1 id="条件渲染-conditional-rendering">条件渲染-Conditional Rendering</h1>
+<p>条件渲染就是让一个东西在满足某种条件的情况下显示或不显示，在html文件中实现。</p>
+<pre><code class="language-html">&lt;p v-if=&quot;inStock&quot;&gt;In Stock&lt;/p&gt;
+&lt;p v-else&gt;Out of Stock&lt;/p&gt;
+</code></pre>
+<p>当inStock为真值时，渲染文字In Stock，否则渲染文字Out of Stock。<br>
+实现这一功能的vue语法主要有：<code>v-if</code>、<code>v-else</code>、<code>v-else-if</code>和<code>v-show</code>。</p>
+<blockquote>
+<p>v-if 最好不要和 v-for 一起使用，且 v-if 拥有更高的优先级。<br>
+v-if 和 v-show 的区别：如果初始条件为假，v-if 则不会渲染，而 v-show 会并通过css中的<code>display：none</code>不去显示。因此 v-if 具有更高的切换开销，v-show 具有更高的初始渲染开销。如果切换频繁，选 v-show，否则选 v-if。</p>
+</blockquote>
+<h1 id="列表渲染-list-rendering">列表渲染-List Rendering</h1>
+<p>也可以说是对列表中所有对象的循环渲染，主要是<code>v-for</code>的使用。<br>
+index.html：<code>&lt;ul&gt;&lt;li v-for=&quot;detail in details&quot;&gt;{{ detail }}&lt;/li&gt;&lt;/ul&gt;</code><br>
+main.js：<code>details: ['50% cotton', '30% wool', '20% polyester'],</code><br>
+列表中的元素可以有多种数据类型，比如dict等等。<br>
+<strong>建议</strong>同时绑定 key 属性，以便后续顺序改变时调整显示顺序。如：<br>
+<code>&lt;ul&gt;&lt;li v-for=&quot;detail in details&quot; :key=&quot;detail.id&quot;&gt;{{ detail }}&lt;/li&gt;&lt;/ul&gt;</code><br>
+（只是做个例子😭detail只是单纯的字符串并没有id，但是一个字典数据项是可能有unique key的！）</p>
+<h1 id="事件处理">事件处理</h1>
+<p>比如点击、悬停事件。</p>
+<h2 id="监听">监听</h2>
+<p><code>&lt;button @click=&quot;greet&quot;&gt;Greet&lt;/button&gt;</code><br>
+<code>@</code>是<code>v-on:</code>的<strong>简写</strong>。greet需要在相关 js 中的methods部分声明并实现整个greet函数。在这个函数中，可以通过<code>this.data</code>操作data。<br>
+类似地，悬停可以通过<code>@mouseover</code>表示。</p>
+<h2 id="多事件处理">多事件处理</h2>
+<p>用逗号分隔。</p>
+<h2 id="事件修饰符">事件修饰符</h2>
+<p>对事件处理的一些额外限制，比如不能点击、只能点击一次等等。还没有用过😤先留一手哈哈（指copy文档）<br>
+这些修饰符有：</p>
+<ul>
+<li>.stop</li>
+<li>.prevent</li>
+<li>.capture</li>
+<li>.self</li>
+<li>.once</li>
+<li>.passive</li>
+</ul>
+<pre><code class="language-html">&lt;!-- 阻止单击事件继续冒泡 --&gt;
+&lt;a @click.stop=&quot;doThis&quot;&gt;&lt;/a&gt;
+
+&lt;!-- 提交事件不再重载页面 --&gt;
+&lt;form @submit.prevent=&quot;onSubmit&quot;&gt;&lt;/form&gt;
+
+&lt;!-- 修饰符可以串联 --&gt;
+&lt;a @click.stop.prevent=&quot;doThat&quot;&gt;&lt;/a&gt;
+
+&lt;!-- 只有修饰符 --&gt;
+&lt;form @submit.prevent&gt;&lt;/form&gt;
+
+&lt;!-- 添加事件监听器时使用事件捕获模式 --&gt;
+&lt;!-- 即内部元素触发的事件先在此处理，然后才交由内部元素进行处理 --&gt;
+&lt;div @click.capture=&quot;doThis&quot;&gt;...&lt;/div&gt;
+
+&lt;!-- 只当在 event.target 是当前元素自身时触发处理函数 --&gt;
+&lt;!-- 即事件不是从内部元素触发的 --&gt;
+&lt;div @click.self=&quot;doThat&quot;&gt;...&lt;/div&gt;
+</code></pre>
+<h2 id="其他修饰符">其他修饰符</h2>
+<ul>
+<li>按键：enter、tab、space、上下左右这些。</li>
+<li>系统：ctrl、alt、shift、meta这些。</li>
+<li>鼠标：left、right、middle这些。</li>
+<li>.exact：允许你控制由精确的系统修饰符组合触发的事件。</li>
+</ul>
+<p>哎，暂时好像还用不到😓用到的时候去官方文档看例子叭。</p>
+<h1 id="class和style绑定">class和style绑定</h1>
+<p>就是在css、style语言中加入data的值，动态调用。</p>
+<ol>
+<li>class（css）<br>
+① <code>:class=&quot;{ 'out-of-stock-img': !inStock }&quot;</code>：只有当inStock为false时，才使用class out-of-stock-img，让图片变灰调。<br>
+② <code>:class=&quot;{ active: isActive, 'text-danger': hasError }&quot;</code>：使用多个class。<br>
+③ <code>&lt;div :class=&quot;classObject&quot;&gt;&lt;/div&gt;</code>：直接使用数据对象or计算属性（后面提到）。<br>
+<code>javascript data() { return { classObject: { active: true, 'text-danger': false } } }</code><br>
+④ <code>&lt;div :class=&quot;[activeClass, errorClass]&quot;&gt;&lt;/div&gt;</code>：数组语法，可以和三元表达式一起使用，详情<a href="https://v3.cn.vuejs.org/guide/class-and-style.html#%E6%95%B0%E7%BB%84%E8%AF%AD%E6%B3%95">查看文档</a>。<br>
+<code>javascript data() { return { activeClass: 'active', errorClass: 'text-danger' } }</code></li>
+<li>style<br>
+① <code>:style=&quot;{ backgroundColor: variant.color }&quot;</code><br>
+② <code>&lt;div :style=&quot;{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }&quot;&gt;&lt;/div&gt;</code>：多重值，只会渲染数组中最后一个被浏览器支持的值。在本例中，如果浏览器支持不带浏览器前缀的 flexbox，那么就只会渲染 display: flex。</li>
+</ol>
+<p>要注意的是，css中的property名可以用驼峰式 (camelCase) 或短横线分隔 (kebab-case，记得用引号括起来) 来命名。</p>
+<h1 id="计算属性-computed-properties">计算属性-Computed Properties</h1>
+<p>计算属性比data更加动态，但是又不至于像method一样复杂。</p>
+<pre><code class="language-javascript">computed: {
+        title() {
+            return this.brand + ' ' + this.product
+        }
+}
+</code></pre>
+<p>此时title就是一个计算属性，并且可以在绑定中和data一样调用它。<br>
+用计算属性（可能）比用watch的侦听器要好😜</p>
+<h1 id="组件与道具-component-props">组件与道具(?)-Component &amp; Props</h1>
+<p>This is exactly like what I have displayed in the upper section. Here we are again. One more time.</p>
+<pre><code class="language-javascript">app.component('组件名称', {
+    props: {},
+    template: ``,
+    data() {
+        return {}
+    },
+    methods: {},
+    computed: {}
+})
+</code></pre>
+<p>没啥好说的，里面的template就是html代码，剩下三个前面也都讲过，简单来讲就是把一部分html代码和js代码整合一下。需要note的是prop，我真的不知道咋翻译，恰好官方文档上也没翻😏</p>
+<p>需要prop出现的原因是，一些组件和组件外的data之间本来存在交互和联系，但是因为代码分离，子组件收不到父组件中的消息和数据，也就无法传递信息了，这时需要props在复用component的时候来<strong>传入数据</strong>。</p>
+<p>So, it's basically like this :</p>
+<pre><code class="language-javascript">props: {
+        premium: {
+            type: Boolean,
+            required: true
+        }
+    },
+</code></pre>
+<p>其中<code>type</code>和<code>required</code>很重要，这成就了props。<br>
+那么在传入数据时，通过v-bind：<br>
+<code>&lt;product-display :premium=&quot;premium&quot;&gt;&lt;/product-display&gt;</code><br>
+引号中的premium来自于父组件的 data 模块之中。之后子组件就可以在自己的scope内使用premium这一变量。</p>
+<h1 id="通讯事件-communicate-events">通讯事件-Communicate Events</h1>
+<p>子组件内也可能由于某些事件，需要改变父组件中数据的值。这时，我们不是直接“传出”或“指定”那个值，而是先传出一个<strong>事件通知</strong>。<br>
+<mark><strong>$emit</strong>：将子组件内发生的事件通知父组件。</mark><br>
+比如，在子组件中，其中<code>this.variants[this.selectedVariant].id</code>被称作payload，可以看作是抛出后面<code>updateCart</code>函数的参数：</p>
+<pre><code class="language-javascript">methods: {
+        addToCart() {
+            this.$emit('add-to-cart', this.variants[this.selectedVariant].id)
+        },
+    }
+</code></pre>
+<p>在父组件复用该子组件的时候，这样使用：<code>&lt;product-display :premium=&quot;premium&quot; @add-to-cart=&quot;updateCart&quot;&gt;&lt;/product-display&gt;</code><br>
+也就是使用<code>@</code>监听<code>add-to-cart</code>这一事件，在监测到这个事件发生时，调用<code>updateCart</code>这一method（在父组件的methods中声明），从而更改cart这个父组件中的变量的值。</p>
+<h1 id="表格与v-model">表格与v-model</h1>
+<p><code>v-bind</code>是单向绑定（one-way binding），也就是说，只能将data绑定到template，data的改变可以引起template渲染的改变，但是，template中对该值的改变无法传入data并改变其值。<br>
+<code>v-model</code>是双向绑定two-way binding），也就是html中的input或其他操作可以改变data的值，然后再改变template中的值，形成一个闭环。</p>
+<p>例子是一个表单的提交。</p>
+<pre><code class="language-html">&lt;form class=&quot;review-form&quot; @submit.prevent=&quot;onSubmit&quot;&gt;
+        &lt;h3&gt;Leave a review&lt;/h3&gt;
+        &lt;label for=&quot;name&quot;&gt;Name:&lt;/label&gt;
+        &lt;input id=&quot;name&quot; v-model=&quot;name&quot;&gt;
+        &lt;label for=&quot;review&quot;&gt;Review:&lt;/label&gt;      
+        &lt;textarea id=&quot;review&quot; v-model=&quot;review&quot;&gt;&lt;/textarea&gt;
+        &lt;label for=&quot;rating&quot;&gt;Rating:&lt;/label&gt;
+        &lt;select id=&quot;rating&quot; v-model.number=&quot;rating&quot;&gt;
+        &lt;option&gt;5&lt;/option&gt;
+        &lt;option&gt;4&lt;/option&gt;
+        &lt;option&gt;3&lt;/option&gt;
+        &lt;option&gt;2&lt;/option&gt;
+        &lt;option&gt;1&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;label for=&quot;recommend&quot;&gt;Would you recommend this product?&lt;/label&gt;
+        &lt;select id=&quot;recommend&quot; v-model=&quot;recommend&quot;&gt;
+        &lt;option&gt;Yes&lt;/option&gt;
+        &lt;option&gt;No&lt;/option&gt;
+        &lt;/select&gt;
+        
+        &lt;input class=&quot;button&quot; type=&quot;submit&quot; value=&quot;Submit&quot;&gt;  
+    &lt;/form&gt;
+</code></pre>
+<p>其中 v-model.number 的number是一种类型转换，把原来的whatever it is转换为number。<br>
+<code>@submit.prevent=&quot;onSubmit&quot;</code>可以防止在提交时重载页面，并调用<code>onSubmit</code>函数。</p>
+<pre><code class="language-javascript">onSubmit() {
+            if (this.name === '' || this.review === '' || this.rating === null || this.recommend === null) {
+                alert('Review is incomplete. Please fill out every field.')
+                return
+            }
+            // create a review
+            let ProductReview = {
+                name: this.name,
+                review: this.review,
+                rating: this.rating,
+                recommend: this.recommend
+            }
+            this.$emit('review-submitted', ProductReview)
+            // reset
+            this.name = ''
+            this.review = ''
+            this.rating = null
+            this.recommend = null
+        }
+</code></pre>
+<p>Yeah. 😎<br>
+<img src="https://sourxi.github.io//post-images/1641279199469.png" alt="" loading="lazy"></p>
+<p>So basically that's all. 这门课十分短小精悍，给人一种“Wow, that's <em>enough</em> enough”的错觉。但是潜意识里当然知道这些还远远不够，就比如在读文档的基础部分时，就会看到很多没见过的知识。而且，尽管Vue已经是一个框架，我觉得自己还仍然需要一个框架，可能与Vue无关，但是很常见、很好看、很有用的框架，就是那种像slides一样的效果。比如<a href="https://zen.ly/zh">zenly的网页</a>，真的太好看了！！！😍😍😍</p>
+<p>Vue于我而言的用途暂时是两个，一个是毕设，一个是个站。毕设要求的掌握程度可能不高，但是做个站的话当然是希望越华丽越好（不一定是指视效，主要是技术的华丽度）。希望自己可以继续加油，能把Vue写成一个系列~</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[再见，大创]]></title>
         <id>https://sourxi.github.io/post/zai-jian-da-chuang/</id>
